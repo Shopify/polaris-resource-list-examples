@@ -16,7 +16,7 @@ export default function CustomerListItem(props) {
     name,
     location,
     orderCount = 0,
-    totalSpent = 0,
+    totalSpent = '$0.00',
     note,
     openOrderCount,
     openOrdersUrl,
@@ -29,12 +29,8 @@ export default function CustomerListItem(props) {
 
   const profile = (
     <div className="CustomerListItem__Profile">
-      <h3 className="CustomerListItem__Title">
-        {name}
-      </h3>
-      <p className="CustomerListItem__Location">
-        {location}
-      </p>
+      <h3 className="CustomerListItem__Title">{name}</h3>
+      <p className="CustomerListItem__Location">{location}</p>
     </div>
   );
 
@@ -50,20 +46,24 @@ export default function CustomerListItem(props) {
   );
 
   let exceptions = [];
-  let conditionalAction = null;
+  let conditionalActions = null;
 
   if (note) {
     exceptions.push({ icon: 'notes', summary: note });
   }
 
-  if (openOrderCount !== undefined) {
+  if (openOrderCount) {
     const label = openOrderCount === 1 ? 'order' : 'orders';
     const summary = `${openOrderCount} open ${label}`;
+
     exceptions.push({ status: 'warning', icon: 'alert', summary });
-    conditionalAction = (
-      <Button plain url={openOrdersUrl}>
-        View open orders
-      </Button>
+
+    conditionalActions = (
+      <div className="CustomerListItem__ConditionalActions">
+        <Button plain url={openOrdersUrl}>
+          View open orders
+        </Button>
+      </div>
     );
   }
 
@@ -75,19 +75,8 @@ export default function CustomerListItem(props) {
     )
     : null;
 
-  const conditionalActions = conditionalAction
-  ? (
-    <div className="CustomerListItem__ConditionalActions">
-      {conditionalAction}
-    </div>
-  )
-  : null;
-
   return (
-    <ResourceList.Item
-      {...rest}
-      media={media}
-    >
+    <ResourceList.Item {...rest} media={media}>
       <div className="CustomerListItem__Main">
         {profile}
         {orders}
