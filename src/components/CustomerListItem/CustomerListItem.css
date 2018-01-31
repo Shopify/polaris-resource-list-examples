@@ -1,0 +1,70 @@
+.CustomerListItem__Title {
+  font-weight: 600;
+}
+
+.CustomerListItem__Orders {
+  display: flex;
+  align-items: center;
+}
+
+.CustomerListItem__Orders > *:not(:first-child)::before {
+  content: '•';
+  margin: 0 4px;
+  color: #919eab; /* ink, lightest */
+}
+
+.CustomerListItem__OrderCount {
+  white-space: nowrap;
+}
+
+.CustomerListItem__TotalSpent {
+  display: flex;
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+.CustomerListItem__Exceptions {
+  margin-top: 4px;
+}
+
+.CustomerListItem__ConditionalActions {
+  margin-top: 4px;
+}
+
+@media (min-width: 640px) {
+  .CustomerListItem__Main {
+    display: flex;
+  }
+
+  .CustomerListItem__Main > *:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  .CustomerListItem__Orders {
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .CustomerListItem__Orders > *:not(:first-child)::before {
+    display: none;
+  }
+
+  .CustomerListItem__OrderCount {
+    min-width: 80px;
+  }
+
+  .CustomerListItem__TotalSpent {
+    min-width: 168px;
+  }
+}
+
+@media (min-width: 800px) {
+  .CustomerListItem__Profile {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .CustomerListItem__Profile > *:not(:last-child) {
+    margin-right: 12px;
+  }
+}
