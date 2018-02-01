@@ -1,0 +1,66 @@
+.ExceptionList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ExceptionList__Item {
+  display: flex;
+  color: #637381; /* ink, lighter */
+}
+
+.ExceptionList__Item + .ExceptionList__Item {
+  margin-top: 4px;
+}
+
+.ExceptionList__Icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+
+.ExceptionList__Bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background-color: #919eab; /* ink, lightest */
+}
+
+.ExceptionList__Summary + .ExceptionList__Description::before {
+  content: ' – ';
+}
+
+.ExceptionList__Item .ExceptionList__Icon svg {
+  fill: #919eab; /* ink, lightest */
+}
+
+/* Warning item variant */
+.ExceptionList__Item--warning .ExceptionList__Summary {
+  color: #c05717; /* orange, dark */
+  font-weight: 500;
+}
+
+.ExceptionList__Item--warning .ExceptionList__Icon svg {
+  fill: #c05717; /* orange, dark */
+}
+
+.ExceptionList__Item--critical .ExceptionList__Bullet {
+  background-color: #c05717; /* orange dark */
+}
+
+/* Critical item variant */
+.ExceptionList__Item--critical .ExceptionList__Summary {
+  color: #bf0711; /* red, dark */
+  font-weight: 500;
+}
+
+.ExceptionList__Item--critical .ExceptionList__Icon svg {
+  fill: #bf0711; /* red, dark */
+}
+
+.ExceptionList__Item--critical .ExceptionList__Bullet {
+  background-color: #bf0711; /* red, dark */
+}
