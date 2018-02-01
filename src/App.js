@@ -52,6 +52,20 @@ const resourceName = {
 };
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedItems: [],
+    }
+
+    this.handleSelectionChange = this.handleSelectionChange.bind(this);
+    this.handleBulkEdit = this.handleBulkEdit.bind(this);
+    this.handleBulkAddTags = this.handleBulkAddTags.bind(this);
+    this.handleBulkRemoveTags = this.handleBulkRemoveTags.bind(this);
+    this.handleBulkDelete = this.handleBulkDelete.bind(this);
+  }
+
   render() {
     return (
       <Page title="Polaris resource list examples">
@@ -60,10 +74,51 @@ class App extends Component {
             resourceName={resourceName}
             items={customers}
             renderItem={CustomerListItem}
+            selectedItems={this.state.selectedItems}
+            onSelectionChange={this.handleSelectionChange}
+            promotedBulkActions={[
+              { content: 'Edit customers', onAction: this.handleBulkEdit },
+            ]}
+            bulkActions={[
+              { content: 'Add tags', onAction: this.handleBulkAddTags },
+              { content: 'Remove tags', onAction: this.handleBulkRemoveTags },
+              { content: 'Delete customers', onAction: this.handleBulkDelete },
+            ]}
           />
         </Card>
       </Page>
     );
+  }
+
+  handleSelectionChange(selectedItems: string[]) {
+    this.setState({ selectedItems });
+  }
+
+  handleBulkEdit() {
+    console.log('Opening bulk editor…');
+  }
+
+  handleBulkAddTags() {
+    console.log('Asynchronously adding tags to customers…');
+    // - A Flash message should be displayed to confirm that async process
+    //   has started.
+    // - Check to see if the items will change (if a filter for certain tags
+    //   is applied)
+  }
+
+  handleBulkRemoveTags() {
+    console.log('Removing tags from customers…');
+    // - A Flash message should be displayed to confirm that async process
+    //   has started.
+    // - Check to see if the items will change (if a filter for certain tags
+    //   is applied)
+  }
+
+  handleBulkDelete() {
+    console.log('Handling bulk customer deletion…');
+    // - Since this action destroys resources in bulk, show a
+    //   confirmation modal (“Are you sure you want to delete {n}
+    //   customers”) before completing the action.
   }
 }
 

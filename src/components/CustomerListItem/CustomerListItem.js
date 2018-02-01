@@ -20,6 +20,7 @@ export default function CustomerListItem(props) {
     note,
     openOrderCount,
     openOrdersUrl,
+    latestOrderUrl,
     ...rest,
   } = props;
 
@@ -75,8 +76,16 @@ export default function CustomerListItem(props) {
     )
     : null;
 
+  const shortcutActions = latestOrderUrl
+    ? [{content: 'View latest order', url: latestOrderUrl}]
+    : null;
+
   return (
-    <ResourceList.Item {...rest} media={media}>
+    <ResourceList.Item
+      {...rest}
+      media={media}
+      shortcutActions={shortcutActions}
+    >
       <div className="CustomerListItem__Main">
         {profile}
         {orders}
