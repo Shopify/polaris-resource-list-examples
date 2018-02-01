@@ -59,6 +59,10 @@
 }
 
 @media (min-width: 800px) {
+  .CustomerListItem__Media {
+    margin: -4px 0;
+  }
+
   .CustomerListItem__Profile {
     display: flex;
     flex-wrap: wrap;

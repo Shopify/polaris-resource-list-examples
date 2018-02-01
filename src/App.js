@@ -59,7 +59,7 @@ class App extends Component {
           <ResourceList
             resourceName={resourceName}
             items={customers}
-            renderItem={CustomerListItem}
+            renderItem={(item) => <CustomerListItem {...item} />}
           />
         </Card>
       </Page>
