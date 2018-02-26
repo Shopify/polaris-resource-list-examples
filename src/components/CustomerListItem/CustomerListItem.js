@@ -3,10 +3,10 @@ import {
   ResourceList,
   Avatar,
   Button,
+  VisuallyHidden,
+  ExceptionList,
+  Truncate,
 } from '@shopify/polaris';
-
-import Truncate from '../Truncate';
-import ExceptionList from '../ExceptionList';
 
 import './CustomerListItem.css';
 
@@ -31,18 +31,20 @@ export default function CustomerListItem(props) {
   const profile = (
     <div className="CustomerListItem__Profile">
       <h3 className="CustomerListItem__Title">{name}</h3>
-      <p className="CustomerListItem__Location">{location}</p>
+      <span className="CustomerListItem__Location">{location}</span>
     </div>
   );
 
   const orders = (
     <div className="CustomerListItem__Orders">
-      <p className="CustomerListItem__OrderCount">
+      <VisuallyHidden>&nbsp;</VisuallyHidden>
+      <span className="CustomerListItem__OrderCount">
         {orderCount} {orderCount === 1 ? 'order' : 'orders'}
-      </p>
-      <p className="CustomerListItem__TotalSpent">
+      </span>
+      <VisuallyHidden>&nbsp;</VisuallyHidden>
+      <span className="CustomerListItem__TotalSpent">
         <Truncate>{totalSpent} spent</Truncate>
-      </p>
+      </span>
     </div>
   );
 
@@ -50,7 +52,13 @@ export default function CustomerListItem(props) {
   let conditionalActions = null;
 
   if (note) {
-    exceptions.push({ icon: 'notes', summary: note });
+    const noteMarkup = (
+      <span>
+        <VisuallyHidden>Customer note:</VisuallyHidden>
+        {note}
+      </span>
+    );
+    exceptions.push({ icon: 'notes', summary: noteMarkup });
   }
 
   if (openOrderCount) {

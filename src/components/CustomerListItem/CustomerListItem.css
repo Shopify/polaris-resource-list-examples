@@ -5,6 +5,7 @@
 .CustomerListItem__Orders {
   display: flex;
   align-items: center;
+  list-style: none;
 }
 
 .CustomerListItem__Orders > *:not(:first-child)::before {
