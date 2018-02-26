@@ -60,6 +60,10 @@
 }
 
 @media (min-width: 800px) {
+  .CustomerListItem__Media {
+    width: 32px;
+  }
+
   .CustomerListItem__Profile {
     display: flex;
     flex-wrap: wrap;
