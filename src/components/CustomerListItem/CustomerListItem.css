@@ -5,6 +5,7 @@
 .CustomerListItem__Orders {
   display: flex;
   align-items: center;
+  list-style: none;
 }
 
 .CustomerListItem__Orders > *:not(:first-child)::before {
@@ -59,6 +60,10 @@
 }
 
 @media (min-width: 800px) {
+  .CustomerListItem__Media {
+    width: 32px;
+  }
+
   .CustomerListItem__Profile {
     display: flex;
     flex-wrap: wrap;

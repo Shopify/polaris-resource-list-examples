@@ -3,10 +3,10 @@ import {
   ResourceList,
   Avatar,
   Button,
+  VisuallyHidden,
+  ExceptionList,
+  Truncate,
 } from '@shopify/polaris';
-
-import Truncate from '../Truncate';
-import ExceptionList from '../ExceptionList';
 
 import './CustomerListItem.css';
 
@@ -20,28 +20,33 @@ export default function CustomerListItem(props) {
     note,
     openOrderCount,
     openOrdersUrl,
+    latestOrderUrl,
     ...rest,
   } = props;
 
   const media = (
-    <Avatar customer size="medium" name={name} source={avatarSource} />
+    <div className="CustomerListItem__Media">
+      <Avatar customer size="medium" name={name} />
+    </div>
   );
 
   const profile = (
     <div className="CustomerListItem__Profile">
       <h3 className="CustomerListItem__Title">{name}</h3>
-      <p className="CustomerListItem__Location">{location}</p>
+      <span className="CustomerListItem__Location">{location}</span>
     </div>
   );
 
   const orders = (
     <div className="CustomerListItem__Orders">
-      <p className="CustomerListItem__OrderCount">
+      <span className="CustomerListItem__OrderCount">
+        <VisuallyHidden>&nbsp;</VisuallyHidden>
         {orderCount} {orderCount === 1 ? 'order' : 'orders'}
-      </p>
-      <p className="CustomerListItem__TotalSpent">
+      </span>
+      <span className="CustomerListItem__TotalSpent">
+        <VisuallyHidden>&nbsp;</VisuallyHidden>
         <Truncate>{totalSpent} spent</Truncate>
-      </p>
+      </span>
     </div>
   );
 
@@ -49,14 +54,29 @@ export default function CustomerListItem(props) {
   let conditionalActions = null;
 
   if (note) {
-    exceptions.push({ icon: 'notes', summary: note });
+    const noteMarkup = (
+      <span>
+        <VisuallyHidden>Customer note:</VisuallyHidden>
+        {note}
+      </span>
+    );
+    exceptions.push({
+      icon: 'notes',
+      title: noteMarkup,
+      truncate: true,
+    });
   }
 
   if (openOrderCount) {
     const label = openOrderCount === 1 ? 'order' : 'orders';
-    const summary = `${openOrderCount} open ${label}`;
+    const title = `${openOrderCount} open ${label}`;
 
-    exceptions.push({ status: 'warning', icon: 'alert', summary });
+    exceptions.push({
+      status: 'warning',
+      icon: 'alert',
+      truncate: true,
+      title,
+    });
 
     conditionalActions = (
       <div className="CustomerListItem__ConditionalActions">
@@ -75,8 +95,16 @@ export default function CustomerListItem(props) {
     )
     : null;
 
+  const shortcutActions = latestOrderUrl
+    ? [{content: 'View latest order', url: latestOrderUrl}]
+    : null;
+
   return (
-    <ResourceList.Item {...rest} media={media}>
+    <ResourceList.Item
+      {...rest}
+      media={media}
+      shortcutActions={shortcutActions}
+    >
       <div className="CustomerListItem__Main">
         {profile}
         {orders}

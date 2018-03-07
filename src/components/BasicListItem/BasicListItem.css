@@ -1,0 +1,37 @@
+.BasicListItem__Title {
+  font-weight: 600;
+}
+
+.BasicListItem__Secondary {
+  display: block;
+}
+
+.BasicListItem__Tertiary {
+  display: block;
+}
+
+@media (min-width: 580px) {
+  .BasicListItem__Content {
+    display: flex;
+  }
+
+  .BasicListItem__Start {
+    margin-right: 12px;
+  }
+
+  .BasicListItem__End {
+    flex: 1;
+    min-width: 180px;
+    text-align: right;
+  }
+}
+
+@media (min-width: 800px) {
+  .BasicListItem__Start {
+    display: flex;
+  }
+
+  .BasicListItem__Secondary {
+    margin-left: 12px;
+  }
+}
