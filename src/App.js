@@ -165,8 +165,8 @@ class App extends Component {
       : null;
 
     return (
-      <Page title="Customers">
-        <Card>
+      <Page title="Example resource list items">
+        <Card title="Customers">
           <ResourceList
             resourceName={resourceName}
             items={items}
@@ -204,8 +204,9 @@ class App extends Component {
           {paginationMarkup}
         </Card>
 
-        <Card>
+        <Card title="Blog posts">
           <ResourceList
+            resourceName={{singular: 'post', plural: 'posts'}}
             items={[
               {
                 title: 'How to Get Value from Wireframes',

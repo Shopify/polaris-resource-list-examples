@@ -25,7 +25,9 @@ export default function CustomerListItem(props) {
   } = props;
 
   const media = (
-    <Avatar customer size="medium" name={name} source={avatarSource} />
+    <div className="CustomerListItem__Media">
+      <Avatar customer size="medium" name={name} />
+    </div>
   );
 
   const profile = (
