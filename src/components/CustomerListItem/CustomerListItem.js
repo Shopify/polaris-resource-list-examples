@@ -37,12 +37,12 @@ export default function CustomerListItem(props) {
 
   const orders = (
     <div className="CustomerListItem__Orders">
-      <VisuallyHidden>&nbsp;</VisuallyHidden>
       <span className="CustomerListItem__OrderCount">
+        <VisuallyHidden>&nbsp;</VisuallyHidden>
         {orderCount} {orderCount === 1 ? 'order' : 'orders'}
       </span>
-      <VisuallyHidden>&nbsp;</VisuallyHidden>
       <span className="CustomerListItem__TotalSpent">
+        <VisuallyHidden>&nbsp;</VisuallyHidden>
         <Truncate>{totalSpent} spent</Truncate>
       </span>
     </div>
@@ -58,14 +58,23 @@ export default function CustomerListItem(props) {
         {note}
       </span>
     );
-    exceptions.push({ icon: 'notes', summary: noteMarkup });
+    exceptions.push({
+      icon: 'notes',
+      title: noteMarkup,
+      truncate: true,
+    });
   }
 
   if (openOrderCount) {
     const label = openOrderCount === 1 ? 'order' : 'orders';
-    const summary = `${openOrderCount} open ${label}`;
+    const title = `${openOrderCount} open ${label}`;
 
-    exceptions.push({ status: 'warning', icon: 'alert', summary });
+    exceptions.push({
+      status: 'warning',
+      icon: 'alert',
+      truncate: true,
+      title,
+    });
 
     conditionalActions = (
       <div className="CustomerListItem__ConditionalActions">

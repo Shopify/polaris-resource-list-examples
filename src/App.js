@@ -9,7 +9,8 @@ import {
 import '@shopify/polaris/styles.css';
 
 import CustomerListItem from './components/CustomerListItem';
-import CustomerListFooter from './components/CustomerListFooter';
+import BasicListItem from './components/BasicListItem';
+import IndexPagination from './components/IndexPagination';
 
 const resourceName = {
   singular: 'customer',
@@ -152,14 +153,14 @@ class App extends Component {
 
     const paginationMarkup = items.length > 0
       ? (
-        <CustomerListFooter>
+        <IndexPagination>
           <Pagination
             hasPrevious={!isFirstPage}
             hasNext={!isLastPage}
             onPrevious={this.handlePreviousPage}
             onNext={this.handleNextPage}
           />
-        </CustomerListFooter>
+        </IndexPagination>
       )
       : null;
 
@@ -201,6 +202,24 @@ class App extends Component {
           />
 
           {paginationMarkup}
+        </Card>
+
+        <Card>
+          <ResourceList
+            items={[
+              {
+                title: 'How to Get Value from Wireframes',
+                secondaryContent: 'by Jonathan Mangrove',
+                tertiaryContent: 'Today, 7:14pm',
+              },
+              {
+                title: 'The Best Design Systems of 2017',
+                secondaryContent: 'by Stephanie Xie',
+                tertiaryContent: 'Dec 28, 2017, 4:21pm',
+              }
+            ]}
+            renderItem={(item) => <BasicListItem {...item} />}
+          />
         </Card>
       </Page>
     );

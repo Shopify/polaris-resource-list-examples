@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './CustomerListFooter.css'
+import './IndexPagination.css'
 
 export default function CustomerListFooter(props) {
   return <div className="CustomerListFooter">{props.children}</div>;
