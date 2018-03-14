@@ -5,6 +5,7 @@ import {
   ResourceList,
   FilterType,
   Pagination,
+  Provider,
 } from '@shopify/polaris';
 import '@shopify/polaris/styles.css';
 
@@ -165,64 +166,66 @@ class App extends Component {
       : null;
 
     return (
-      <Page title="Example resource list items">
-        <Card title="Customers">
-          <ResourceList
-            resourceName={resourceName}
-            items={items}
-            renderItem={(customer) => <CustomerListItem {...customer} />}
-            selectedItems={selectedItems}
-            onSelectionChange={this.handleSelectionChange}
-            promotedBulkActions={[
-              { content: 'Edit customers', onAction: this.handleBulkEdit },
-            ]}
-            bulkActions={[
-              { content: 'Add tags', onAction: this.handleBulkAddTags },
-              { content: 'Remove tags', onAction: this.handleBulkRemoveTags },
-              { content: 'Delete customers', onAction: this.handleBulkDelete },
-            ]}
-            sortOptions={sortOptions}
-            sortValue={sortValue}
-            onSortChange={this.handleSortChange}
-            filterControl={
-              <ResourceList.FilterControl
-                resourceName={resourceName}
-                filters={availableFilters}
-                appliedFilters={appliedFilters}
-                onFiltersChange={this.handleFiltersChange}
-                searchValue={searchValue}
-                onSearchChange={this.handleSearchChange}
-                additionalAction={{
-                  content: 'Save',
-                  onAction: this.handleSaveFilters,
-                }}
-              />
-            }
-            hasMoreItems
-          />
-
-          {paginationMarkup}
-        </Card>
-
-        <Card title="Blog posts">
-          <ResourceList
-            resourceName={{singular: 'post', plural: 'posts'}}
-            items={[
-              {
-                title: 'How to Get Value from Wireframes',
-                secondaryContent: 'by Jonathan Mangrove',
-                tertiaryContent: 'Today, 7:14pm',
-              },
-              {
-                title: 'The Best Design Systems of 2017',
-                secondaryContent: 'by Stephanie Xie',
-                tertiaryContent: 'Dec 28, 2017, 4:21pm',
+      <Provider>
+        <Page title="Example resource list items">
+          <Card title="Customers">
+            <ResourceList
+              resourceName={resourceName}
+              items={items}
+              renderItem={(customer) => <CustomerListItem {...customer} />}
+              selectedItems={selectedItems}
+              onSelectionChange={this.handleSelectionChange}
+              promotedBulkActions={[
+                { content: 'Edit customers', onAction: this.handleBulkEdit },
+              ]}
+              bulkActions={[
+                { content: 'Add tags', onAction: this.handleBulkAddTags },
+                { content: 'Remove tags', onAction: this.handleBulkRemoveTags },
+                { content: 'Delete customers', onAction: this.handleBulkDelete },
+              ]}
+              sortOptions={sortOptions}
+              sortValue={sortValue}
+              onSortChange={this.handleSortChange}
+              filterControl={
+                <ResourceList.FilterControl
+                  resourceName={resourceName}
+                  filters={availableFilters}
+                  appliedFilters={appliedFilters}
+                  onFiltersChange={this.handleFiltersChange}
+                  searchValue={searchValue}
+                  onSearchChange={this.handleSearchChange}
+                  additionalAction={{
+                    content: 'Save',
+                    onAction: this.handleSaveFilters,
+                  }}
+                />
               }
-            ]}
-            renderItem={(item) => <BasicListItem {...item} />}
-          />
-        </Card>
-      </Page>
+              hasMoreItems
+            />
+
+            {paginationMarkup}
+          </Card>
+
+          <Card title="Blog posts">
+            <ResourceList
+              resourceName={{singular: 'post', plural: 'posts'}}
+              items={[
+                {
+                  title: 'How to Get Value from Wireframes',
+                  secondaryContent: 'by Jonathan Mangrove',
+                  tertiaryContent: 'Today, 7:14pm',
+                },
+                {
+                  title: 'The Best Design Systems of 2017',
+                  secondaryContent: 'by Stephanie Xie',
+                  tertiaryContent: 'Dec 28, 2017, 4:21pm',
+                }
+              ]}
+              renderItem={(item) => <BasicListItem {...item} />}
+            />
+          </Card>
+        </Page>
+      </Provider>
     );
   }
 
