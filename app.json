@@ -1,0 +1,9 @@
+{
+  "name": "polaris-resource-list-examples",
+  "description": "Example code for the resource list component in Polaris 2.0 and higher",
+  "env": {
+    "HEROKU_APP_NAME": {
+      "required": true
+    }
+  }
+}
