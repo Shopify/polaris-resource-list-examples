@@ -1,5 +1,7 @@
 # Polaris resource list examples
 
+[![CircleCI](https://circleci.com/gh/Shopify/polaris-resource-list-examples.svg?style=shield)](https://circleci.com/gh/Shopify/polaris-resource-list-examples)
+
 This repository contains example code for the resource list component in Polaris 2.0 and higher.
 
 ## Run it
