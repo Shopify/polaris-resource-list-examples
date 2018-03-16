@@ -7,8 +7,8 @@ This repository contains example code for the resource list component in Polaris
 To see the examples in action, run:
 
 ```
-npm install
-npm start
+yarn
+yarn start
 ```
 
 This runs the app in the development mode.
