@@ -15,7 +15,7 @@ export default function BasicListItem(props) {
         <div className="BasicListItem__Content">
           <div className="BasicListItem__Start">
             <h3 className="BasicListItem__Title">
-              {title}
+              {title} 🌶
             </h3>
             <span className="BasicListItem__Secondary">
               {secondaryContent}
