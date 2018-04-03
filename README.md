@@ -7,6 +7,13 @@ This repository contains example code for the resource list component in Polaris
 To see the examples in action, run:
 
 ```
+npm install
+npm start
+```
+
+Or, if you’re using yarn (preferred for contributors):
+
+```
 yarn
 yarn start
 ```
