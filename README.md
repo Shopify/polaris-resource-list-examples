@@ -13,6 +13,13 @@ npm install
 npm start
 ```
 
+Or, if you’re using yarn (preferred for contributors):
+
+```
+yarn
+yarn start
+```
+
 This runs the app in the development mode.
 
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser
