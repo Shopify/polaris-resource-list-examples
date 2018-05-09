@@ -42,7 +42,7 @@ The App component shows how these components can be used:
 
 - [App.js](./src/App.js)
 
-For a detailed guide to the resource list component in Polaris, [see the case study](https://polaris-v2.shopify.com/components/resource-list#study) available in the Polaris documentation.
+For a detailed guide to the resource list component in Polaris, [see the case study](https://polaris.shopify.com/components/resource-list#study) available in the Polaris documentation.
 
 ## Something Missing? Issues?
 
