@@ -5,7 +5,7 @@ import {
   ResourceList,
   FilterType,
   Pagination,
-  Provider,
+  AppProvider,
 } from '@shopify/polaris';
 import '@shopify/polaris/styles.css';
 
@@ -166,7 +166,7 @@ class App extends Component {
       : null;
 
     return (
-      <Provider>
+      <AppProvider>
         <Page title="Example resource list items">
           <Card title="Customers">
             <ResourceList
@@ -225,7 +225,7 @@ class App extends Component {
             />
           </Card>
         </Page>
-      </Provider>
+      </AppProvider>
     );
   }
 
